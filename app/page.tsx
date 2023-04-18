@@ -20,52 +20,24 @@ export default function Product() {
           <div className="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
             <div className="lg:col-span-5 lg:col-start-8">
               <div className="flex justify-between">
-                <Suspense
-                  fallback={
-                    <div className="w-1/3 h-[28px] animate-pulse bg-gray-500 rounded"></div>
-                  }
-                >
-                  {/* @ts-expect-error Server Component */}
-                  <ProductTitle />
-                </Suspense>
+                {/* @ts-expect-error Server Component */}
+                <ProductTitle />
                 <div className="text-xl font-medium text-gray-900">
-                  <Suspense
-                    fallback={
-                      <div className="w-1/3 h-[28px] animate-pulse bg-gray-500 rounded"></div>
-                    }
-                  >
-                    {/* @ts-expect-error Server Component */}
-                    <Price />
-                  </Suspense>
+                  {/* @ts-expect-error Server Component */}
+                  <Price />
                 </div>
               </div>
               {/* Reviews */}
               <div className="mt-4">
-                <Suspense
-                  fallback={
-                    <div className="w-1/2 h-[20px] animate-pulse bg-gray-500 rounded"></div>
-                  }
-                >
-                  {/* @ts-expect-error Server Component */}
-                  <Reviews />
-                </Suspense>
+                {/* @ts-expect-error Server Component */}
+                <Reviews />
               </div>
             </div>
 
             {/* Image gallery */}
             <div className="mt-8 lg:col-span-7 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
-              <Suspense
-                fallback={
-                  <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:gap-8">
-                    <div className="lg:col-span-2 lg:row-span-2 rounded-lg h-[696px] animate-pulse bg-gray-500"></div>
-                    <div className="rounded-lg h-[332px] animate-pulse bg-gray-500"></div>
-                    <div className="rounded-lg h-[332px] animate-pulse bg-gray-500"></div>
-                  </div>
-                }
-              >
-                {/* @ts-expect-error Server Component */}
-                <Images />
-              </Suspense>
+              {/* @ts-expect-error Server Component */}
+              <Images />
             </div>
 
             <div className="mt-8 lg:col-span-5">
@@ -83,15 +55,8 @@ export default function Product() {
                 <h2 className="text-sm font-medium text-gray-900">
                   Description
                 </h2>
-
-                <Suspense
-                  fallback={
-                    <div className="w-full h-[28px] animate-pulse bg-gray-500 rounded"></div>
-                  }
-                >
-                  {/* @ts-expect-error Server Component */}
-                  <Description />
-                </Suspense>
+                {/* @ts-expect-error Server Component */}
+                <Description />
               </div>
             </div>
           </div>
