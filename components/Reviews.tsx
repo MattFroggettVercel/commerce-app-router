@@ -9,8 +9,6 @@ export default async function Reviews() {
     ? "https://" + process.env.VERCEL_URL
     : "http://localhost:3000";
 
-  console.log(`${urlBase}/api/reviews`);
-
   const reviewsRequest = await fetch(`${urlBase}/api/reviews?nonce=5`, {
     cache: "no-store",
   });
