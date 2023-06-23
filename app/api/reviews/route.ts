@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 
 export async function GET(request: Request) {
   const delay = () => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(1);
-      }, 15000);
+      }, 3000);
     });
   };
 
