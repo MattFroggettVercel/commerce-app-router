@@ -9,7 +9,7 @@ export default async function Price() {
         "X-Auth-Token": process.env.BIGCOMMERCE_API_TOKEN,
       } as HeadersInit,
       next: {
-        revalidate: 30,
+        revalidate: 5,
       },
     }
   );
