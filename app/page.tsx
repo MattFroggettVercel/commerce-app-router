@@ -5,6 +5,7 @@ import Description from "@/components/Description";
 import Reviews from "@/components/Reviews";
 import ProductTitle from "@/components/ProductTitle";
 import Images from "@/components/Images";
+import { get } from "@vercel/edge-config";
 
 export const runtime = "edge";
 
@@ -12,7 +13,9 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Product() {
+export default async function Product() {
+  const showReviews = await get("showReviews");
+
   return (
     <div className="bg-white">
       <div className="pb-16 pt-6 sm:pb-24">
@@ -41,14 +44,16 @@ export default function Product() {
               </div>
               {/* Reviews */}
               <div className="mt-4">
-                <Suspense
-                  fallback={
-                    <div className="w-1/2 h-[20px] animate-pulse bg-gray-500 rounded"></div>
-                  }
-                >
-                  {/* @ts-expect-error Server Component */}
-                  <Reviews />
-                </Suspense>
+                {showReviews && (
+                  <Suspense
+                    fallback={
+                      <div className="w-1/2 h-[20px] animate-pulse bg-gray-500 rounded"></div>
+                    }
+                  >
+                    {/* @ts-expect-error Server Component */}
+                    <Reviews />
+                  </Suspense>
+                )}
               </div>
             </div>
 
