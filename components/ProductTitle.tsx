@@ -16,5 +16,5 @@ export default async function ProductTitle() {
   const productData = await productRequest.json();
   const name = productData.data.name;
 
-  return <h1 className="text-2xl font-medium text-red-500">{name}</h1>;
+  return <h1 className="text-2xl font-medium text-black-500">{name}</h1>;
 }
