@@ -1,6 +1,6 @@
 export default async function ProductTitle() {
   const productRequest = await fetch(
-    `${process.env.BIGCOMMERCE_API_URL}v3/catalog/products/77`,
+    `${process.env.BIGCOMMERCE_API_URL}vf3/catalog/products/77`,
     {
       method: "GET",
       headers: {
