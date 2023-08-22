@@ -15,6 +15,7 @@ function classNames(...classes: any) {
 
 export default async function Product() {
   const showReviews = await get("showReviews");
+  const something = getSomethingelse();
 
   return (
     <div className="bg-white">
