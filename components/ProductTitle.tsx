@@ -9,12 +9,12 @@ export default async function ProductTitle() {
         "X-Auth-Token": process.env.BIGCOMMERCE_API_TOKEN,
       } as HeadersInit,
       next: {
-        revalidate: 30,
+        revalidate: 120,
       },
     }
   );
   const productData = await productRequest.json();
   const name = productData.data.name;
 
-  return <h1 className="text-2xl font-medium text-red-500">{name}</h1>;
+  return <h1 className="text-2xl font-medium">{name}</h1>;
 }

@@ -1,10 +1,17 @@
 import { StarIcon } from "@heroicons/react/20/solid";
+import { get } from "@vercel/edge-config";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default async function Reviews() {
+  const showReviews = await get("showReviews");
+
+  if (!showReviews) {
+    return null;
+  }
+
   const urlBase = process.env.VERCEL_URL
     ? "https://" + process.env.VERCEL_URL
     : "http://localhost:3000";

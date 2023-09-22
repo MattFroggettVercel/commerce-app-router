@@ -5,7 +5,7 @@ import Description from "@/components/Description";
 import Reviews from "@/components/Reviews";
 import ProductTitle from "@/components/ProductTitle";
 import Images from "@/components/Images";
-import { get } from "@vercel/edge-config";
+import AddToCart from "@/components/AddToCart";
 
 export const runtime = "edge";
 
@@ -14,8 +14,6 @@ function classNames(...classes: any) {
 }
 
 export default async function Product() {
-  const showReviews = await get("showReviews");
-
   return (
     <div className="bg-white">
       <div className="pb-16 pt-6 sm:pb-24">
@@ -44,16 +42,14 @@ export default async function Product() {
               </div>
               {/* Reviews */}
               <div className="mt-4">
-                {showReviews && (
-                  <Suspense
-                    fallback={
-                      <div className="w-1/2 h-[20px] animate-pulse bg-gray-500 rounded"></div>
-                    }
-                  >
-                    {/* @ts-expect-error Server Component */}
-                    <Reviews />
-                  </Suspense>
-                )}
+                <Suspense
+                  fallback={
+                    <div className="w-1/2 h-[20px] animate-pulse bg-gray-500 rounded"></div>
+                  }
+                >
+                  {/* @ts-expect-error Server Component */}
+                  <Reviews />
+                </Suspense>
               </div>
             </div>
 
@@ -75,12 +71,20 @@ export default async function Product() {
 
             <div className="mt-8 lg:col-span-5">
               <form>
-                <button
-                  type="submit"
-                  className="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                <Suspense
+                  fallback={
+                    <button
+                      type="submit"
+                      disabled
+                      className="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    >
+                      ...
+                    </button>
+                  }
                 >
-                  Add to cart
-                </button>
+                  {/* @ts-expect-error Server Component */}
+                  <AddToCart />
+                </Suspense>
               </form>
 
               {/* Product details */}

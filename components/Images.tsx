@@ -10,7 +10,9 @@ export default async function Images() {
         Accept: "application/json",
         "X-Auth-Token": process.env.BIGCOMMERCE_API_TOKEN,
       } as HeadersInit,
-      cache: "no-store",
+      next: {
+        revalidate: 120,
+      },
     }
   );
   const productData = await productRequest.json();
